@@ -6,6 +6,15 @@ def draw_square(t, length):
 	"""draws a square with the given side length"""
 	draw_polygon(t, 4, length)
 
+def draw_rectangle(t, h, w):
+	for i in range(4):
+		if i % 2 == 0:
+			t.forward(w)
+		else:
+			t.forward(h)
+		t.left(90)
+
+
 def draw_circle(t, radius):
 	"""Draws a circle with the given radius"""
 	t.circle(radius)
@@ -16,6 +25,26 @@ def draw_polygon(t, sides, length):
 	for _ in range(sides):
 		t.forward(2*math.pi*length/sides)
 		t.left(angle)
+
+def draw_pumpkin(t, x, y, radius):
+	"""Draws a pumpkin (orange circle) at the given (x,y) location"""
+	t.penup()
+	t.goto(x,y)
+	t.pendown()
+	t.fillcolor("orange")
+	t.begin_fill()
+	t.circle(radius)
+	t.end_fill()
+
+	#draws the stem
+	stem_width = radius//2
+	t.penup()
+	t.goto(x-(stem_width/4),y+(2*radius))
+	t.pendown()
+	t.fillcolor("green")
+	t.begin_fill()
+	draw_rectangle(t, radius // 2, radius // 5)
+	t.end_fill()
 
 #create a turtle object
 t = turtle.Turtle()
@@ -37,8 +66,9 @@ screen.setup(width=600, height=600)
 t.clear()
 
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
-for i in range(100):
-	draw_polygon(t, i+3, 50)
+draw_pumpkin(t,0,0, 100)
+#for i in range(100):
+#	draw_polygon(t, i+3, 50)
 
 # Close the turtle graphics window when clicked
 turtle.exitonclick()
