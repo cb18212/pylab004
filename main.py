@@ -1,12 +1,10 @@
 import turtle
-
+import math
 """PUT YOUR FUNCTIONS HERE"""
 
 def draw_square(t, length):
 	"""draws a square with the given side length"""
-	for _ in range(4):
-		t.foreward()
-		t.left()
+	draw_polygon(t, 4, length)
 
 def draw_circle(t, radius):
 	"""Draws a circle with the given radius"""
@@ -16,7 +14,7 @@ def draw_polygon(t, sides, length):
 	"""Draws a regular polygon with a given number of sides and side length."""
 	angle = 360/sides
 	for _ in range(sides):
-		t.forward(length)
+		t.forward(2*math.pi*length/sides)
 		t.left(angle)
 
 #create a turtle object
@@ -29,7 +27,8 @@ t.speed(10)
 # Create a window to draw in
 # Create a new turtle screen and set its background color
 screen = turtle.Screen()
-screen.bgcolor("darkblue")
+screen.bgcolor("black")
+t.color("green")
 
 #set the width and height of the screen
 screen.setup(width=600, height=600)
@@ -38,7 +37,8 @@ screen.setup(width=600, height=600)
 t.clear()
 
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
-draw_polygon(t, 5, 100)
+for i in range(100):
+	draw_polygon(t, i+3, 50)
 
 # Close the turtle graphics window when clicked
 turtle.exitonclick()
