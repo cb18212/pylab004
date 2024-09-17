@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadca8b2-0e53-4d54-b929-60ba3e3de8e4" name="Changes" comment="simplified draw_square and made draw_polygon draw based on radius instead of side length">
+    <list default="true" id="dadca8b2-0e53-4d54-b929-60ba3e3de8e4" name="Changes" comment="added pumpkin base">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -114,12 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1726595938601</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added pumpkin base">
+      <option name="closed" value="true" />
+      <created>1726599460540</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726599460540</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial/part 1" />
     <MESSAGE value="simplified draw_square and made draw_polygon draw based on radius instead of side length" />
-    <option name="LAST_COMMIT_MESSAGE" value="simplified draw_square and made draw_polygon draw based on radius instead of side length" />
+    <MESSAGE value="added pumpkin base" />
+    <option name="LAST_COMMIT_MESSAGE" value="added pumpkin base" />
   </component>
 </project>

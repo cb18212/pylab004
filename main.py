@@ -1,19 +1,22 @@
 import turtle
 import math
+import random
+
 """PUT YOUR FUNCTIONS HERE"""
+
+def moveto(t, x,y):
+	t.penup()
+	t.goto(x, y)
+	t.pendown()
 
 def draw_square(t, length):
 	"""draws a square with the given side length"""
 	draw_polygon(t, 4, length)
 
 def draw_rectangle(t, h, w):
-	for i in range(4):
-		if i % 2 == 0:
-			t.forward(w)
-		else:
-			t.forward(h)
+	for length in [w,h,w,h]:
+		t.forward(length)
 		t.left(90)
-
 
 def draw_circle(t, radius):
 	"""Draws a circle with the given radius"""
@@ -29,7 +32,7 @@ def draw_polygon(t, sides, length):
 def draw_pumpkin(t, x, y, radius):
 	"""Draws a pumpkin (orange circle) at the given (x,y) location"""
 	t.penup()
-	t.goto(x,y)
+	t.goto(x,y-radius/2)
 	t.pendown()
 	t.fillcolor("orange")
 	t.begin_fill()
@@ -39,18 +42,58 @@ def draw_pumpkin(t, x, y, radius):
 	#draws the stem
 	stem_width = radius//2
 	t.penup()
-	t.goto(x-(stem_width/4),y+(2*radius))
+	t.goto(x-(stem_width/4),(y+1.5*radius))
 	t.pendown()
 	t.fillcolor("green")
 	t.begin_fill()
 	draw_rectangle(t, radius // 2, radius // 5)
 	t.end_fill()
 
+def draw_eye(t,x,y,size):
+	"""draws one triangular eye at x,y"""
+	t.penup()
+	t.goto(x,y)
+	t.pendown()
+	t.fillcolor("yellow")
+	t.begin_fill()
+	draw_polygon(t,3,size)
+	t.end_fill()
+
+def draw_mouth(t, x, y, width):
+	"""draws a jagged mouth using a series of connected lines"""
+	t.penup()
+	t.goto(x-width/2,y)
+	t.pendown()
+	t.fillcolor("yellow")
+	t.begin_fill()
+	t.left(60)
+	for _ in range(5):
+		for i in (-120, 120):
+			t.forward(width/(5))
+			t.left(i)
+	t.end_fill()
+
+def draw_star(t,x,y,size):
+	"""draws a star at the given (x,y position)"""
+	moveto(t, x, y)
+	t.fillcolor("white")
+	t.begin_fill()
+	draw_polygon(t, 5, size)
+	t.end_fill()
+
+def draw_sky(t, num_stars):
+	"""Draws a starry sky with the given number of stars"""
+	for _ in range(num_stars):
+		x = random.randint(-300, 300)
+		y = random.randint(-300,300)
+		size = random.randint(3,10)
+		draw_star(t,x,y,size)
+
 #create a turtle object
 t = turtle.Turtle()
 
 #hide the turtle and set speed
-t.speed(10)
+t.speed(5000)
 #t.hideturtle()
 
 # Create a window to draw in
@@ -66,7 +109,12 @@ screen.setup(width=600, height=600)
 t.clear()
 
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
+draw_sky(t,100)
+t.speed(10)
 draw_pumpkin(t,0,0, 100)
+draw_eye(t, -40-15, 50, 30)
+draw_eye(t, 40-15, 50, 30)
+draw_mouth(t, 0, 0, 100)
 #for i in range(100):
 #	draw_polygon(t, i+3, 50)
 
