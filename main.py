@@ -49,6 +49,13 @@ def draw_pumpkin(t, x, y, radius):
 	draw_rectangle(t, radius // 2, radius // 5)
 	t.end_fill()
 
+def lantern(t, x,y, size):
+	draw_pumpkin(t, x, y, 100)
+	draw_eye(t, x-55, y+50, 30)
+	draw_eye(t, x+35, y+50, 30)
+	draw_mouth(t, x, y, 100)
+	t.setheading(0)
+	
 def draw_eye(t,x,y,size):
 	"""draws one triangular eye at x,y"""
 	t.penup()
@@ -109,14 +116,23 @@ screen.setup(width=600, height=600)
 t.clear()
 
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
-draw_sky(t,100)
+t.speed(0)
+draw_sky(t,10)
 t.speed(10)
-draw_pumpkin(t,0,0, 100)
-draw_eye(t, -40-15, 50, 30)
-draw_eye(t, 40-15, 50, 30)
-draw_mouth(t, 0, 0, 100)
-#for i in range(100):
-#	draw_polygon(t, i+3, 50)
+
+#draw_pumpkin(t,0,0, 100)
+#lantern(t,-150,150, 5)
+#draw_eye(t, -40-15, 50, 30)
+#draw_eye(t, 40-15, 50, 30)
+#draw_mouth(t, 0, 0, 100)
+
+# Draw three jack-o-lanterns
+lantern(t, -150, -150, 100)
+
+lantern(t, 0, -150, 80)
+
+lantern(t, 150, -150, 100)
+
 
 # Close the turtle graphics window when clicked
 turtle.exitonclick()
