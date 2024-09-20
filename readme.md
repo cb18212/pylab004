@@ -1,0 +1,3 @@
+I found encapsulation and generalization to be very useful in this lab.
+It makes the code much more readable. If we didn't encapsulate the code for drawing simpler shapes, it would have become an unmanagable nightmare trying to draw all of the shapes needed for the scene.
+Generalization was also pretty useful, since I could make a more general polygon-drawing function to reuse code for drawing the stars and eyes.

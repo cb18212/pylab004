@@ -31,9 +31,7 @@ def draw_polygon(t, sides, length):
 
 def draw_pumpkin(t, x, y, radius):
 	"""Draws a pumpkin (orange circle) at the given (x,y) location"""
-	t.penup()
-	t.goto(x,y-radius/2)
-	t.pendown()
+	moveto(t,x,y-radius/2)
 	t.fillcolor("orange")
 	t.begin_fill()
 	t.circle(radius)
@@ -41,9 +39,7 @@ def draw_pumpkin(t, x, y, radius):
 
 	#draws the stem
 	stem_width = radius//2
-	t.penup()
-	t.goto(x-(stem_width/4),(y+1.5*radius))
-	t.pendown()
+	moveto(t, x-(stem_width/4),(y+1.5*radius))
 	t.fillcolor("green")
 	t.begin_fill()
 	draw_rectangle(t, radius // 2, radius // 5)
@@ -51,16 +47,15 @@ def draw_pumpkin(t, x, y, radius):
 
 def lantern(t, x,y, size):
 	draw_pumpkin(t, x, y, 100)
-	draw_eye(t, x-55, y+50, 30)
-	draw_eye(t, x+35, y+50, 30)
+	eyescale = 30
+	draw_eye(t, x-55-(eyescale/2), y+50, eyescale)
+	draw_eye(t, x+35-(eyescale/2), y+50, eyescale)
 	draw_mouth(t, x, y, 100)
 	t.setheading(0)
 	
 def draw_eye(t,x,y,size):
 	"""draws one triangular eye at x,y"""
-	t.penup()
-	t.goto(x,y)
-	t.pendown()
+	moveto(t,x,y)
 	t.fillcolor("yellow")
 	t.begin_fill()
 	draw_polygon(t,3,size)
@@ -68,9 +63,7 @@ def draw_eye(t,x,y,size):
 
 def draw_mouth(t, x, y, width):
 	"""draws a jagged mouth using a series of connected lines"""
-	t.penup()
-	t.goto(x-width/2,y)
-	t.pendown()
+	moveto(t, x-width/2,y)
 	t.fillcolor("yellow")
 	t.begin_fill()
 	t.left(60)
@@ -127,11 +120,11 @@ t.speed(10)
 #draw_mouth(t, 0, 0, 100)
 
 # Draw three jack-o-lanterns
-lantern(t, -150, -150, 100)
+lantern(t, -150, -250, 100)
 
-lantern(t, 0, -150, 80)
+lantern(t, 0, -250, 80)
 
-lantern(t, 150, -150, 100)
+lantern(t, 150, -250, 100)
 
 
 # Close the turtle graphics window when clicked
